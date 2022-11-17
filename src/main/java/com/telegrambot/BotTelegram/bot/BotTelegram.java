@@ -16,6 +16,9 @@ public class BotTelegram extends TelegramLongPollingBot {
 	@Override
 	public void onUpdateReceived(Update update) {
 		// Se obtiene el mensaje escrito por el usuario
+		
+		
+		
 		final String messageTextReceived = update.getMessage().getText();
 		p.InitList();
 
