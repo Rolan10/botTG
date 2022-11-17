@@ -7,7 +7,7 @@
 		<version>2.7.5</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.telegrambot</groupId>
+	<groupId>com.telegrambot.BotTelegram</groupId>
 	<artifactId>BotTelegram</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>BotTelegram</name>
@@ -48,9 +48,12 @@
 				<groupId>com.heroku.sdk</groupId>
 				<artifactId>heroku-maven-plugin</artifactId>
 				<configuration>
-					<processTypes>
-						<web>java $JAVA_OPTS -cp target/classes:target/dependency/* BotTelegramApplication</web>
-					</processTypes>
+					<assembleDirectory>target</assembleDirectory>
+					<programs>
+						<program>
+							<mainClass>com.telegrambot.BotTelegram.BotTelegramApplication</mainClass>
+						</program>
+					</programs>
 				</configuration>
 			</plugin>
 			<plugin>
