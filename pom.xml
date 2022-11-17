@@ -45,18 +45,8 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<version>3.0.1</version>
-				<executions>
-					<execution>
-						<id>copy-dependencies</id>
-						<phase>package</phase>
-						<goals>
-							<goal>copy-dependencies</goal>
-						</goals>
-					</execution>
-				</executions>
+				<groupId>com.heroku.sdk</groupId>
+				<artifactId>heroku-maven-plugin</artifactId>
 				<configuration>
 					<processTypes>
 						<web>java $JAVA_OPTS -cp target/classes:target/dependency/* BotTelegramApplication</web>
@@ -69,5 +59,34 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	<profiles>
+		<profile>
+			<id>test</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.heroku.sdk</groupId>
+						<artifactId>heroku-maven-plugin</artifactId>
+						<configuration>
+							<appName>myapp-test</appName>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.heroku.sdk</groupId>
+						<artifactId>heroku-maven-plugin</artifactId>
+						<configuration>
+							<appName>myapp-prod</appName>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
